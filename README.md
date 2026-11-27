@@ -56,7 +56,7 @@ A manual, read-only QA session on [Etherscan](https://etherscan.io), the Ethereu
 
 An API testing session on [JSONPlaceholder](https://jsonplaceholder.typicode.com), a free fake REST API, covering all five HTTP methods (GET, POST, PUT, PATCH, DELETE) plus negative testing. The Postman collection runs 15 test cases with 48 automated assertions via Postman CLI — no login or API key needed.
 
-**Test results (27 November 2026):** 15 test cases, 48 assertions — **48 Passed, 0 Failed**. Two real findings were documented: POST accepts an empty/incomplete body without validation (Medium), and DELETE of a nonexistent resource returns 200 instead of 404 (Low).
+**Test results (27 November 2026):** 15 test cases, 48 assertions — **48 Passed, 0 Failed**. Two API behavior observations were documented: POST accepts an empty/incomplete body without validation, and DELETE of a nonexistent resource returns 200 instead of 404 (no published API contract exists, so these are deviations from common REST conventions, not confirmed defects).
 
 **Scope:** REST API testing, positive and negative testing, automated assertions.
 **Testing type:** Manual test design + automated execution (Postman CLI).

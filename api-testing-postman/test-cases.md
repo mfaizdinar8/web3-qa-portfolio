@@ -20,16 +20,16 @@ Tool: Postman CLI 1.94.0. Each test case is one request in
 | --- | --- | --- | --- |
 | TC-06 | `POST /posts` | `{"title":"QA Test Post","body":"Created by Postman CLI test","userId":1}` | 201; `id` = 101; echoes `title`, `body`, `userId` |
 | TC-09 | `PUT /posts/1` | `{"id":1,"title":"updated title","body":"updated body","userId":1}` | 200; `id` stays 1; `title`, `body`, `userId` fully replaced |
-| TC-10 | `PATCH /posts/1` | `{"title":"patched title"}` | 200; `id` stays 1; `title` patched; `userId` still 1, `body` intact |
+| TC-10 | `PATCH /posts/1` | `{"title":"patched title"}` | 200; `id` stays 1; `title` patched; `userId` still 1; `body` equals the value read before PATCH (pre-request GET saved to a collection variable) |
 | TC-11 | `DELETE /posts/1` | — | 200; response body is `{}` |
 
 ## Negative
 
 | ID | Request | Expected result | Note |
 | --- | --- | --- | --- |
-| TC-07 | `POST /posts` (no `title`) | 201; `id` = 101; `title` missing in response | Documents missing server-side validation → BUG-01 |
-| TC-08 | `POST /posts` (empty `{}`) | 201; `id` = 101; response contains only `id` | Documents missing server-side validation → BUG-01 |
-| TC-12 | `DELETE /posts/999` | 200; response body is `{}` | Inconsistent with GET 404 for the same id → BUG-02 |
+| TC-07 | `POST /posts` (no `title`) | 201; `id` = 101; `title` missing in response | Documents missing server-side validation → OBS-01 |
+| TC-08 | `POST /posts` (empty `{}`) | 201; `id` = 101; response contains only `id` | Documents missing server-side validation → OBS-01 |
+| TC-12 | `DELETE /posts/999` | 200; response body is `{}` | Inconsistent with GET 404 for the same id → OBS-02 |
 | TC-13 | `GET /posts/999` | 404; response body is `{}` | Correct REST behavior |
 | TC-14 | `GET /posts/abc` | 404; response body is `{}` | Invalid id handled correctly |
 | TC-15 | `GET /invalid-endpoint` | 404; response body is `{}` | Unknown route handled correctly |

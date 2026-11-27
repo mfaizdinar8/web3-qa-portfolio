@@ -26,7 +26,7 @@ api-testing-postman/
 │   └── api-tests.json      # Postman collection (15 requests + test scripts)
 ├── test-cases.md           # Test case specifications
 ├── test-results.md         # Real execution results
-├── bug-report.md           # Bugs found (2)
+├── bug-report.md           # API behavior observations (2)
 └── final-qa-report.md      # QA summary & conclusion
 ```
 
@@ -46,8 +46,8 @@ and hits the public JSONPlaceholder API.
 - Postman CLI 1.94.0 (Node v24.22.1, npm 10.9.4)
 - Run date: 27 Nov 2026, Muse VM (Linux)
 - Target: `https://jsonplaceholder.typicode.com`
-- Average response time in final run: ~1,400 ms (min 1,242 ms, max 1,871 ms)
-- Total run duration: 21.2 s; data received: 9.36 KB
+- Average response time in final run: ~1,468 ms (min 1,312 ms, max 1,727 ms)
+- Total run duration: 23.7 s; data received: 9.55 KB
 
 ## Results summary
 
@@ -58,13 +58,14 @@ and hits the public JSONPlaceholder API.
 | Passed | 48 |
 | Failed | 0 |
 
-Two real findings are documented in `bug-report.md`:
-1. **BUG-01 (Medium):** `POST /posts` accepts an empty body / missing fields and still returns `201 Created` — no server-side validation.
-2. **BUG-02 (Low):** `DELETE /posts/999` (nonexistent) returns `200 OK` instead of `404` — inconsistent with `GET /posts/999`, which correctly returns `404`.
+Two observed behaviors are documented in `bug-report.md`:
+1. **OBS-01 (Medium significance):** `POST /posts` accepts an empty body / missing fields and still returns `201 Created` — no server-side validation.
+2. **OBS-02 (Low significance):** `DELETE /posts/999` (nonexistent) returns `200 OK` instead of `404` — inconsistent with `GET /posts/999`, which correctly returns `404`.
 
 > Note: JSONPlaceholder is a mock API by design — it does not persist data and
-> intentionally skips validation. The findings above are real observed behavior,
-> reported as deviations from expected REST behavior, not as production defects.
+> intentionally skips validation, and there is no published API contract for it.
+> The items above are real observed behavior, reported as deviations from common
+> REST conventions — not confirmed defects against a spec, and not production bugs.
 
 ## Notes on honesty
 

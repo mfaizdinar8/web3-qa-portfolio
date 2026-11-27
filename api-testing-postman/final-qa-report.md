@@ -10,7 +10,7 @@
 
 Demonstrate manual + automated REST API testing: build a Postman collection
 covering all 5 HTTP methods plus negative testing, execute it for real, and
-document results, bugs, and a QA conclusion — as recruiter-visible evidence.
+document results, observations, and a QA conclusion — as recruiter-visible evidence.
 
 ## 2. Scope
 
@@ -28,19 +28,21 @@ document results, bugs, and a QA conclusion — as recruiter-visible evidence.
 | Assertions | 48 |
 | Passed | 48 |
 | Failed | 0 |
-| Bugs found | 2 (1 Medium, 1 Low) |
+| Observations | 2 (1 Medium, 1 Low significance) |
 
 All 15 test cases passed against their documented expected behavior. Response
 times were stable (avg ~1.4 s, max 1.9 s).
 
-## 4. Bugs found
+## 4. Observations (API contract inconsistencies)
 
-| ID | Summary | Severity |
+| ID | Summary | Significance |
 | --- | --- | --- |
-| BUG-01 | `POST /posts` accepts empty / incomplete body, returns `201` — no server-side validation | Medium |
-| BUG-02 | `DELETE /posts/999` returns `200` instead of `404` — inconsistent with `GET` | Low |
+| OBS-01 | `POST /posts` accepts empty / incomplete body, returns `201` — no server-side validation | Medium |
+| OBS-02 | `DELETE /posts/999` returns `200` instead of `404` — inconsistent with `GET` | Low |
 
-Details, reproduction steps, and evidence: `bug-report.md`.
+Details, reproduction steps, and evidence: `bug-report.md`. There is no
+published API contract for JSONPlaceholder, so these are deviations from
+common REST conventions, not confirmed defects against a spec.
 
 ## 5. Process notes
 
@@ -52,6 +54,10 @@ Details, reproduction steps, and evidence: `bug-report.md`.
   in `test-results.md`.
 - No result in this report was fabricated; all PASS/FAIL values come from
   real Postman CLI executions.
+- After a review, TC-10 was strengthened: the PATCH test now compares the
+  `body` value before and after patching explicitly (a pre-request GET saves
+  the original value to a collection variable). The collection was re-run
+  twice after the change, both 48/48 PASS.
 
 ## 6. Conclusion
 
@@ -59,7 +65,8 @@ The API is functionally sound for its purpose as a mock service: reads,
 creates, full/partial updates, deletes, and error handling for unknown
 resources and routes all behave as expected, with two deviations worth
 reporting (missing input validation on POST, inconsistent DELETE status).
-Given it is a mock API by design, both findings are acceptable as documented
-observations rather than release blockers.
+Given it is a mock API by design and there is no published contract to
+violate, both findings are acceptable as documented observations rather than
+release blockers.
 
 **Verdict: PASS with 2 documented observations. Portfolio-ready.**
