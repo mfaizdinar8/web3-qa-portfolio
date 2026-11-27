@@ -11,6 +11,7 @@ I am an aspiring Web3 QA tester learning manual quality assurance by testing rea
 - Functional Testing
 - Exploratory Testing
 - Bug Reporting
+- API Testing (Postman)
 - Web3 dApp Familiarity
 
 ## Featured Projects
@@ -51,9 +52,29 @@ A manual, read-only QA session on [Etherscan](https://etherscan.io), the Ethereu
 - [Final QA Report](etherscan-manual-qa/final-qa-report.md) — full test results and conclusion
 - [Bug Observations](etherscan-manual-qa/bug-observations.md) — open observation and testing notes
 
+### Project 03 — REST API Testing with Postman
+
+An API testing session on [JSONPlaceholder](https://jsonplaceholder.typicode.com), a free fake REST API, covering all five HTTP methods (GET, POST, PUT, PATCH, DELETE) plus negative testing. The Postman collection runs 15 test cases with 48 automated assertions via Postman CLI — no login or API key needed.
+
+**Test results (27 November 2026):** 15 test cases, 48 assertions — **48 Passed, 0 Failed**. Two real findings were documented: POST accepts an empty/incomplete body without validation (Medium), and DELETE of a nonexistent resource returns 200 instead of 404 (Low).
+
+**Scope:** REST API testing, positive and negative testing, automated assertions.
+**Testing type:** Manual test design + automated execution (Postman CLI).
+**Disclaimer:** Independent practice project. JSONPlaceholder is a mock API by design — it does not persist data and intentionally skips validation, so the findings are documented observations, not production defects.
+
+#### Project Files
+
+- [README](api-testing-postman/README.md) — project overview and results summary
+- [Collection](api-testing-postman/collection/api-tests.json) — Postman collection (15 requests + test scripts)
+- [Test Cases](api-testing-postman/test-cases.md) — full test case list (TC-01–TC-15)
+- [Test Results](api-testing-postman/test-results.md) — real execution results (48/48 PASS)
+- [Bug Report](api-testing-postman/bug-report.md) — 2 findings with reproduction steps
+- [Final QA Report](api-testing-postman/final-qa-report.md) — full test results and conclusion
+
 ## Tools
 
 - Browser (Muse Browser)
+- Postman CLI
 - GitHub
 - Markdown
 
