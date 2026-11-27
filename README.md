@@ -12,6 +12,7 @@ I am an aspiring Web3 QA tester learning manual quality assurance by testing rea
 - Exploratory Testing
 - Bug Reporting
 - API Testing (Postman)
+- Web Automation (Selenium)
 - Web3 dApp Familiarity
 
 ## Featured Projects
@@ -71,10 +72,31 @@ An API testing session on [JSONPlaceholder](https://jsonplaceholder.typicode.com
 - [Bug Report](api-testing-postman/bug-report.md) — 2 findings with reproduction steps
 - [Final QA Report](api-testing-postman/final-qa-report.md) — full test results and conclusion
 
+
+### Project 04 — Selenium Web Automation
+
+An automated browser test suite for [ethereum.org](https://ethereum.org) using Python + Selenium WebDriver in headless Chrome, covering homepage checks, navigation, element interaction, and negative cases. The automation step after manual QA (Project 01) and API testing (Project 03).
+
+**Test results (27 November 2026):** 15 test cases — **15 Passed, 0 Failed, 0 Errors** in 47.3 s. No site defects were found; four earlier runs failed on mistakes in my own test expectations, each fixed and re-run to a clean 15/15.
+
+**Scope:** Browser automation, locators, element interaction, explicit waits, test reporting.
+**Testing type:** Automated (Selenium + unittest).
+**Disclaimer:** Independent practice project, not officially affiliated with the Ethereum Foundation.
+
+#### Project Files
+
+- [README](selenium-web-automation/README.md) — project overview and results summary
+- [Test Cases](selenium-web-automation/test-cases.md) — full test case list (TC-01–TC-15)
+- [Test Results](selenium-web-automation/test-results.md) — real execution results (15/15 PASS)
+- [Observations](selenium-web-automation/observations.md) — findings from the runs
+- [Final QA Report](selenium-web-automation/final-qa-report.md) — full test results and conclusion
+- [Tests](selenium-web-automation/tests/) — Selenium test code (unittest)
+
 ## Tools
 
 - Browser (Muse Browser)
 - Postman CLI
+- Python + Selenium WebDriver
 - GitHub
 - Markdown
 
